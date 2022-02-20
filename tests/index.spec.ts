@@ -1,7 +1,7 @@
 import test from "ava";
 import Checker from "../src";
 
-test("Referenced Hooks without second argument", async (t) => {
+test("Referenced Hooks without second argument", (t) => {
   const code = `
     import { useMemo, useCallback, useEffect, useLayoutEffect } from 'react';
     const Foo = () => {
@@ -20,7 +20,7 @@ test("Referenced Hooks without second argument", async (t) => {
   const checker = new Checker({
     code,
   });
-  const dangers = await checker.check();
+  const dangers = checker.check();
   t.deepEqual(dangers, [
     {
       line: 4,
@@ -45,7 +45,7 @@ test("Referenced Hooks without second argument", async (t) => {
   ]);
 });
 
-test("Namespaced Hooks without second argument", async (t) => {
+test("Namespaced Hooks without second argument", (t) => {
   const code = `
     import * as React from 'react';
     const Foo = () => {
@@ -64,7 +64,7 @@ test("Namespaced Hooks without second argument", async (t) => {
   const checker = new Checker({
     code,
   });
-  const dangers = await checker.check();
+  const dangers = checker.check();
   t.deepEqual(dangers, [
     {
       line: 4,
@@ -89,7 +89,7 @@ test("Namespaced Hooks without second argument", async (t) => {
   ]);
 });
 
-test("Referenced Hooks without second argument (in rax)", async (t) => {
+test("Referenced Hooks without second argument (in rax)", (t) => {
   const code = `
     import { useMemo, useCallback, useEffect, useLayoutEffect } from 'rax';
     const Foo = () => {
@@ -109,7 +109,7 @@ test("Referenced Hooks without second argument (in rax)", async (t) => {
     code,
     libs: ["rax"],
   });
-  const dangers = await checker.check();
+  const dangers = checker.check();
   t.deepEqual(dangers, [
     {
       line: 4,
@@ -134,7 +134,7 @@ test("Referenced Hooks without second argument (in rax)", async (t) => {
   ]);
 });
 
-test("Namespaced Hooks without second argument (in rax)", async (t) => {
+test("Namespaced Hooks without second argument (in rax)", (t) => {
   const code = `
     import * as Rax from 'rax';
     const Foo = () => {
@@ -154,7 +154,7 @@ test("Namespaced Hooks without second argument (in rax)", async (t) => {
     code,
     libs: ["rax"],
   });
-  const dangers = await checker.check();
+  const dangers = checker.check();
   t.deepEqual(dangers, [
     {
       line: 4,

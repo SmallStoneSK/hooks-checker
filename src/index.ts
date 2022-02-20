@@ -44,9 +44,10 @@ class Checker {
 
   constructor(options: IOptions) {
     this.options = options;
+    this.init();
   }
 
-  private async init(): Promise<void> {
+  private init(): void {
     if (!this.options.ast) {
       if (!this.options.code) {
         throw new Error(
@@ -133,10 +134,10 @@ class Checker {
     return dangers;
   }
 
-  async check() {
-    await this.init();
+  check(): IDanger[] {
     const possibleHooks = this.collectPossibleHooks();
-    return this.checkHookUsages(possibleHooks);
+    const dangers = this.checkHookUsages(possibleHooks);
+    return dangers;
   }
 }
 

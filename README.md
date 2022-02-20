@@ -18,7 +18,7 @@ demo
 const Checker = require('hooks-checker');
 
 const code = `
-  import { useMemo, useCallback, useEffect, useLayoutEffect } from 'react';
+  import { useEffect } from 'react';
   const Foo = () => {
     useEffect(() => {});
     return null;
@@ -26,9 +26,9 @@ const code = `
   export default Foo;
 `;
 
-const main = async () => {
+const main = () => {
   const checker = new Checker({ filePath: 'path/to/your/file.js' });
-  const dangers = await checker.check();
+  const dangers = checker.check();
   // warning or error with dangers by yourself
 };
 
