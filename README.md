@@ -12,7 +12,7 @@ $ npm install hooks-checker
 
 ## 使用
 
-demo
+**demo**
 
 ```js
 const Checker = require('hooks-checker');
@@ -27,15 +27,15 @@ const code = `
 `;
 
 const main = () => {
-  const checker = new Checker({ filePath: 'path/to/your/file.js' });
+  const checker = new Checker({ code });
   const dangers = checker.check();
-  // warning or error with dangers by yourself
+  // warn or error with dangers by yourself
 };
 
 main();
 ```
 
-output of dangers
+**output of dangers**
 
 ```json
 [
@@ -57,3 +57,8 @@ output of dangers
 |libs|string\[\]|否|['react']|引入 hooks 的包，也可以是 rax|
 
 注意：`code` 和 `ast` 不能同时为空。
+
+
+## License
+
+[MIT License](./LICENSE)
