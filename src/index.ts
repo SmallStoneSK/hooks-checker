@@ -1,4 +1,3 @@
-import * as fs from "fs-extra";
 import * as t from "@babel/types";
 import { code2ast } from "./utils";
 import traverse from "@babel/traverse";
